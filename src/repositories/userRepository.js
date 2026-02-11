@@ -15,7 +15,7 @@ async function create(user) {
   return result.insertId;
 }
 
-async function fyndByEmail(email) {
+async function findByEmail(email) {
   const sql = `
         SELECT * FROM users
         WHERE email = ?
@@ -26,4 +26,4 @@ async function fyndByEmail(email) {
   return rows[0];
 }
 
-module.exports = { create, fyndByEmail };
+module.exports = { create, findByEmail };
