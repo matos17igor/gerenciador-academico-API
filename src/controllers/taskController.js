@@ -19,4 +19,15 @@ async function create(req, res) {
   }
 }
 
-module.exports = { create };
+async function list(req, res) {
+  try {
+    const userId = req.userId;
+    const tasks = await taskServices.listTasks(userId);
+
+    return res.status(200).json(tasks);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+}
+
+module.exports = { create, list };
