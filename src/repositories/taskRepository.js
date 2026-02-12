@@ -26,4 +26,23 @@ async function findAll(userId) {
   return rows;
 }
 
-module.exports = { create, findAll };
+async function update(task) {
+  const sql = `
+    UPDATE tasks 
+    SET title = ?, 
+    description = ?,
+    deadline = ?,
+    WHERE id = ? AND user_id = ?
+  `;
+
+  const [result] = await db.execute(sql, [
+    task.title,
+    task.description,
+    task.deadline,
+    task.id,
+    task.userId,
+  ]);
+  return result;
+}
+
+module.exports = { create, findAll, update };
