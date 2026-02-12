@@ -5,13 +5,6 @@ const taskController = require("../controllers/taskController");
 
 router.use(verifyToken);
 
-router.get("/", (req, res) => {
-  return res.json({
-    message: "Acesso autorizado!",
-    usuarioLogado: req.userId,
-  });
-});
-
 router.post("/", taskController.create);
 router.get("/", taskController.list);
 
