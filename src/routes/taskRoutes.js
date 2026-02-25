@@ -7,5 +7,6 @@ router.use(verifyToken);
 
 router.post("/", taskController.create);
 router.get("/", taskController.list);
+router.put("/:id", taskController.update);
 
 module.exports = router;

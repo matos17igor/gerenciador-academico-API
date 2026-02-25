@@ -30,4 +30,18 @@ async function list(req, res) {
   }
 }
 
-module.exports = { create, list };
+async function update(req, res) {
+  try {
+    const taskId = req.params.id;
+    const userId = req.userId;
+    const taskData = req.body;
+
+    const tasks = await taskServices.updateTask(taskId, userId, taskData);
+
+    return res.status(200).json(tasks);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+}
+
+module.exports = { create, list, update };

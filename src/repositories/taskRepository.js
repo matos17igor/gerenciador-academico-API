@@ -31,7 +31,7 @@ async function update(task) {
     UPDATE tasks 
     SET title = ?, 
     description = ?,
-    deadline = ?,
+    deadline = ?
     WHERE id = ? AND user_id = ?
   `;
 

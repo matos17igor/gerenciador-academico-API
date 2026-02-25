@@ -16,7 +16,6 @@ async function login(email, password) {
   }
 
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-    // de onde vem o user.id?
     expiresIn: "1h",
   });
 
