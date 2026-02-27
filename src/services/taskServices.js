@@ -50,4 +50,16 @@ async function updateTask(id, userId, taskData) {
   return { message: "Tarefa atualizada com sucesso!" };
 }
 
-module.exports = { registerTask, listTasks, updateTask };
+async function deleteTask(id, userId) {
+  const result = await taskRepository.remove(id, userId);
+
+  if (result.affectedRows === 0) {
+    throw new Error(
+      "Tarefa nao encontrada ou voce nao tem permissao para excluir"
+    );
+  }
+
+  return { message: "Tarefa deletada com sucesso!" };
+}
+
+module.exports = { registerTask, listTasks, updateTask, deleteTask };

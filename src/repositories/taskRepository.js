@@ -45,4 +45,14 @@ async function update(task) {
   return result;
 }
 
-module.exports = { create, findAll, update };
+async function remove(id, userId) {
+  const sql = `
+    DELETE FROM tasks 
+    WHERE id = ? AND user_id = ?
+  `;
+
+  const [result] = await db.execute(sql, [id, userId]);
+  return result;
+}
+
+module.exports = { create, findAll, update, remove };

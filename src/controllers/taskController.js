@@ -44,4 +44,17 @@ async function update(req, res) {
   }
 }
 
-module.exports = { create, list, update };
+async function remove(req, res) {
+  try {
+    const taskId = req.params.id;
+    const userId = req.userId;
+
+    const tasks = await taskServices.deleteTask(taskId, userId);
+
+    return res.status(200).json(tasks);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+}
+
+module.exports = { create, list, update, remove };

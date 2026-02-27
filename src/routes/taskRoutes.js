@@ -8,5 +8,6 @@ router.use(verifyToken);
 router.post("/", taskController.create);
 router.get("/", taskController.list);
 router.put("/:id", taskController.update);
+router.delete("/:id", taskController.remove);
 
 module.exports = router;
