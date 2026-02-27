@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("../swagger.json");
 const db = require("./config/database");
 const PORT = 3000;
 
@@ -8,6 +10,8 @@ const authRoutes = require("./routes/authRotes");
 const taskRoutes = require("./routes/taskRoutes");
 
 app.use(express.json());
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
