@@ -25,8 +25,8 @@ Você precisará ter instalado na sua máquina:
 Abra o seu terminal e rode o comando abaixo:
 
 ```bash
-git clone [https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git](https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git)
-cd gerenciador-academico
+git clone https://github.com/matos17igor/gerenciador-academico-API.git
+cd gerenciador-academico-API
 ```
 
 ### 3. Instalar as dependências
