@@ -1,5 +1,5 @@
 const taskRepository = require("../repositories/taskRepository");
-const { isDeadlineValid } = require("../utils/dataValidator");
+const { isDeadlineValid } = require("../utils/dateValidator");
 
 async function registerTask(title, description, deadline, userId, subjectId) {
   if (!isDeadlineValid(deadline)) {
