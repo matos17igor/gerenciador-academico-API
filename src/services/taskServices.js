@@ -1,10 +1,8 @@
 const taskRepository = require("../repositories/taskRepository");
+const { isDeadlineValid } = require("../utils/dataValidator");
 
 async function registerTask(title, description, deadline, userId, subjectId) {
-  const deadlineData = new Date(deadline);
-  const now = new Date();
-
-  if (deadlineData < now) {
+  if (!isDeadlineValid(deadline) < now) {
     throw new Error("A data de entrega nao pode ser no passado!");
   }
 
@@ -26,10 +24,7 @@ async function listTasks(userId) {
 async function updateTask(id, userId, taskData) {
   const { title, description, deadline } = taskData;
 
-  const updateData = new Date(deadline);
-  const now = new Date();
-
-  if (updateData < now) {
+  if (!isDeadlineValid(deadline) < now) {
     throw new Error("A data de entrega nao pode ser no passado!");
   }
 
